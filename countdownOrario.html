@@ -88,7 +88,7 @@
         let intervallo1 = oraInizio + 6120;
         let intervallo2 = oraInizio + 12600;
 
-        let tRimIntervallo = oraAttuale > intervallo1 ? intervallo2 - oraAttuale : intervallo1 - oraAttuale;
+        let tRimIntervallo = oraAttuale > intervallo1 ? (intervallo2 - oraAttuale) : (intervallo1 - oraAttuale);
         if (tRimIntervallo < 0) {
             tRimIntervallo = 0;
         }
@@ -104,7 +104,7 @@
             }
         } else {
             tProssimaOra = 0;
-            alert("La scuola è già finita coglione")
+            alert("La scuola è già finita");
             return;
         }
 
@@ -119,7 +119,7 @@
 
         }
 
-        let progresstRimOraP = (( 3240 - tProssimaOra) / (tRimIntervallo <= 3240 && tRimIntervallo != 0 ? 3240+300 : 3240)) * 100;
+        let progresstRimOraP = (( 3240 - tProssimaOra) / (tRimIntervallo <= 3240 && tRimIntervallo != 0 ? 3540 : 3240)) * 100;
         let progressttRimIntervalloP = ((6480 - tRimIntervallo) / 6480) * 100;
         let progressttRimUscitaP = ((oraAttuale - oraInizio) / (3240 * numOre)) * 100;
 
