@@ -1,0 +1,139 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #myCanvas {
+            border: 1px solid black;
+        }
+
+        button {
+            background-color: blue;
+            border-radius: 6px;
+            border: 1px solid #0000d0;
+            color: white;
+            cursor: pointer;
+            padding: 7px 14px;
+            text-transform: uppercase;
+        }
+
+        .nero {
+            margin-top: -560px;
+            margin-left: 849px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            background-color: black;
+        }
+
+        .blu {
+            margin-top: -510px;
+            margin-left: 849px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: blue;
+        }
+
+        .verde {
+            margin-top: -460px;
+            margin-left: 849px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            background-color: green;
+        }
+
+        .rosso {
+            margin-top: -410px;
+            margin-left: 849px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            background-color: red;
+        }
+
+        .bianco {
+            margin-top: -360px;
+            margin-left: 849px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            background-color: white;
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <canvas width="800" height="600" id="myCanvas"></canvas>
+    <div class="nero" onclick="nero()"></div>
+    <div class="rosso" onclick="rosso()"></div>
+    <div class="bianco" onclick="bianco()"></div>
+    <div class="verde" onclick="verde()"></div>
+    <div class="blu" onclick="blu()"></div>
+</body>
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var bEnter = false;
+    // var bContinue = false;
+    c.onmousedown = () => {
+        bEnter = true;
+        ctx.beginPath();
+    }
+    c.onmouseup = () => {
+        bEnter = false;
+    }
+
+    c.onmousemove = function (e) {
+        var x = e.pageX;
+        var y = e.pageY;
+
+        if (bEnter) {
+            ctx.lineTo(x - 8, y - 8);
+            ctx.moveTo(x - 8, y - 8);
+            ctx.stroke();
+        }
+    }
+
+    function rosso() {
+        ctx.strokeStyle = "#ff0000";
+        ctx.lineWidth = 1;
+    }
+
+    function nero() {
+        ctx.strokeStyle = "#000000";
+        ctx.lineWidth = 1;
+    }
+
+    function blu() {
+        ctx.strokeStyle = "#0000ff";
+        ctx.lineWidth = 1;
+    }
+
+    function verde() {
+        ctx.strokeStyle = "#00bb2d";
+        ctx.lineWidth = 1;
+    }
+
+    function bianco() {
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 10;
+    }
+
+
+</script>
+
+
+</html>
