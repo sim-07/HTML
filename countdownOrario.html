@@ -119,7 +119,7 @@
 
         }
 
-        let progresstRimOraP = (( 3240 - tProssimaOra) / (tRimIntervallo <= 3240 && tRimIntervallo != 0 ? 3540 : 3240)) * 100;
+        let progresstRimOraP = (((tRimIntervallo <= 3240 && tRimIntervallo != 0 ? 3540 : 3240) - tProssimaOra) / 3240) * 100;
         let progressttRimIntervalloP = ((6480 - tRimIntervallo) / 6480) * 100;
         let progressttRimUscitaP = ((oraAttuale - oraInizio) / (3240 * numOre)) * 100;
 
