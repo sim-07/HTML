@@ -67,14 +67,14 @@
     let numOre = 6;
 
     let t = oraInizio;
-    for (let i = 0; i < numOre; i++) {
-        ore.push(t += durataOre)
-    }
-
     if (new Date().getDay() == 1) {
         numOre = 9;
     } else if (new Date().getDay() == 4) {
         numOre = 8;
+    }
+
+    for (let i = 0; i < numOre; i++) {
+        ore.push(t += durataOre)
     }
 
     setInterval(function () {
@@ -92,7 +92,6 @@
         if (tRimIntervallo < 0) {
             tRimIntervallo = 0;
         }
-
 
         let prossimaOra = ore.find(el => el > oraAttuale);
         let tProssimaOra;
