@@ -109,6 +109,10 @@
 
         let tRimUscita = ore[ore.length - 1] - oraAttuale;
 
+        if (new Date().getDay() == 1 || new Date().getDay() == 4) {
+            tRimUscita += 1800;
+        }
+
         function formatTime(seconds) {
             let h = Math.floor(seconds / 3600);
             let m = Math.floor((seconds % 3600) / 60);
