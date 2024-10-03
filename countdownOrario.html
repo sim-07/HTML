@@ -65,6 +65,7 @@
     let ore = [];
     let durataOre = mDurataOre * 60;
     let numOre = 6;
+    let pausaPranzo = 1800;
 
     let t = oraInizio;
     if (new Date().getDay() == 1) {
@@ -74,7 +75,10 @@
     }
 
     for (let i = 0; i < numOre; i++) {
-        ore.push(t += durataOre)
+        ore.push(t += durataOre);
+        if (i == 4) {
+            t += pausaPranzo;
+        }
     }
 
     setInterval(function () {
@@ -109,10 +113,6 @@
 
         let tRimUscita = ore[ore.length - 1] - oraAttuale;
 
-        if (new Date().getDay() == 1 || new Date().getDay() == 4) {
-            tRimUscita += 1800;
-        }
-
         function formatTime(seconds) {
             let h = Math.floor(seconds / 3600);
             let m = Math.floor((seconds % 3600) / 60);
@@ -124,15 +124,15 @@
 
         let progresstRimOraP = (((tRimIntervallo <= 3240 && tRimIntervallo != 0 ? 3540 : 3240) - tProssimaOra) / 3240) * 100;
         let progressttRimIntervalloP = ((6480 - tRimIntervallo) / 6480) * 100;
-        let progressttRimUscitaP = ((oraAttuale - oraInizio) / (3240 * numOre)) * 100;
+        let progressttRimUscitaP = ((oraAttuale - oraInizio) / ((3240 * numOre) + pausaPranzo)) * 100; 
 
-        document.getElementById('percentualeRimOra').textContent = Math.round(progresstRimOraP) + "%"
-        document.getElementById('percentualeRimIntervallo').textContent = Math.round(progressttRimIntervalloP) + "%"
-        document.getElementById('percentualeRimUscita').textContent = Math.round(progressttRimUscitaP) + "%"
+        document.getElementById('percentualeRimOra').textContent = Math.round(progresstRimOraP) + "%";
+        document.getElementById('percentualeRimIntervallo').textContent = Math.round(progressttRimIntervalloP) + "%";
+        document.getElementById('percentualeRimUscita').textContent = Math.round(progressttRimUscitaP) + "%";
 
-        let tRimOraProgress = document.getElementById("tRimOraProgress")
-        let tRimIntervalloProgress = document.getElementById("tRimIntervalloProgress")
-        let tRimUscitaProgress = document.getElementById("tRimUscitaProgress")
+        let tRimOraProgress = document.getElementById("tRimOraProgress");
+        let tRimIntervalloProgress = document.getElementById("tRimIntervalloProgress");
+        let tRimUscitaProgress = document.getElementById("tRimUscitaProgress");
 
         tRimOraProgress.value = progresstRimOraP;
         tRimIntervalloProgress.value = progressttRimIntervalloP;
@@ -142,7 +142,7 @@
         document.getElementById('tRimIntervalloP').textContent = `Tempo prossimo intervallo: ${formatTime(tRimIntervallo)}`;
         document.getElementById('tRimUscitaP').textContent = `Tempo all'uscita: ${formatTime(tRimUscita)}`;
 
-    }, 1000)
+    }, 1000);
 
 </script>
 
